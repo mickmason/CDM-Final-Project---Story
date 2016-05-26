@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    
+    
+    <style>
+        canvas  { border: 1px solid #676767; }    
+    </style>
+    
+    </head>
+    <body>
+    <h1>Canvas tt-1</h1>
+    <canvas id="cx-1" width="512" height="288" >
+        
+    </canvas>    
+    <script>
+        //Abstract
+        function CanvasObject() {
+            Object.defineProperties(this, {
+                x: { 
+                    get: function getX() {
+                        return x;
+                    },
+                    set: function setX(x) {
+                        this.x = x;
+                    }
+                },
+                y: { 
+                    get: function getY() {
+                        return y;
+                    },
+                    set: function setY(y) {
+                        this.y = y;
+                    }
+                    
+                },
+                ctx: {  
+                    get: function getCtx() {
+                        return ctx;
+                    },
+                    set: function setCtx(ctx) {
+                        this.ctx = ctx;
+                    }
+                }
+            });
+        }
+        CanvasObject.prototype.move = CanvasObject.prototype.move || function move(x,y) {
+            //(this.x === x && this.y === y) return true : true;
+            this.ctx.translate(x, y) ; 
+            
+            console.log(this.x, this.y);
+        }
+        console.log(CanvasObject.x=100);
+
+        function FillRect(ctx,x,y,w,h) {
+            this.x = x; this.y = y, this.w =w, this.h = h; this.ctx = ctx; 
+            //console.log("This x " + this.x);
+            ctx.fillRect(x,y,w,h) ;  
+        
+        }
+        
+        FillRect.prototype = CanvasObject.prototype;
+
+        function ClearRect(ctx,x,y,w,h) {
+          ctx.clearRect(x,y,w,h) ;  
+        }        
+        function StrokeRect(ctx,x,y,w,h) {
+          ctx.strokeRect(x,y,w,h) ;  
+        }             
+        var canvas = document.getElementById('cx-1');
+        if (canvas.getContext) {
+            var ctx = canvas.getContext('2d') ;
+            var fillRect = new FillRect(ctx,25,25,100,100);
+            
+             //ctx.fillRect();
+            var clearRect = new ClearRect(ctx,45,45,60,60);
+//            var strokeRect = new StrokeRect(ctx,50,50,50,50);
+            
+            ctx.beginPath();
+            ctx.moveTo(180,50);
+            ctx.lineTo(205,75);
+            ctx.lineTo(205,25);
+            ctx.fill();  
+            
+            ctx.beginPath();
+            ctx.moveTo(180,100);
+            ctx.lineTo(205,125);
+            ctx.lineTo(205,75);
+            ctx.fill(); 
+            
+        } else {
+            console.log('No canvas');
+        }
+    </script>
+        
+    </body>
+</html>
