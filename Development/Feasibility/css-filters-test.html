@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style type="text/css">
+            html { box-sizing: border-box; font-family:monospace;}
+            *, *:before, *:after { box-sizing: border-box; }
+            .row {  }
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+            [class*='cols-'] { padding: 0 15px; float: left; width: 100%; }
+            .cols-12 { max-width 100%; }
+            
+            /* Filters */
+            .blurred { -webkit-filter: blur(2px) }
+            .brightness { -webkit-filter: brightness(0.7) }
+            .contrast { -webkit-filter: contrast(1.5) }
+            .contrast-brightness { -webkit-filter: contrast(2.5) brightness(0.9) }
+            .drop-shadow { -webkit-filter: drop-shadow(0px 4px 4px #888) }
+            .grayscale { -webkit-filter: grayscale(75%); }
+            .sepia { -webkit-filter: sepia(75%); }
+            .invert { -webkit-filter: invert(20%); }            
+        </style>
+
+    </head>
+    <body>
+        <header></header>
+        <main>
+            <section class="row">
+                <div class="cols-12">
+                    <h1>CSS Filters testout</h1>
+                    <h2>Filterd fishes</h2>
+<!--                    <img class="contrast" src="fishes.jpg" alt="fishes" />-->
+                    <img class="invert" src="fishes.jpg" alt="fishes" />
+                </div>
+            </section>
+        </main>
+    </body>
+</html>
