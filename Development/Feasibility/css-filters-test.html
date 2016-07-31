@@ -4,7 +4,7 @@
         <style type="text/css">
             html { box-sizing: border-box; font-family:monospace;}
             *, *:before, *:after { box-sizing: border-box; }
-            .row {  }
+            .row { padding: 1.25em 0; }
             .row:after {
                 content: "";
                 display: table;
@@ -12,6 +12,9 @@
             }
             [class*='cols-'] { padding: 0 15px; float: left; width: 100%; }
             .cols-12 { max-width 100%; }
+            
+            .page-header { border-bottom: 1px dotted #ababab; }
+            .page-header h1 { margin-top: 0.262em;}
             
             /* Filters */
             .blurred { -webkit-filter: blur(2px) }
@@ -28,11 +31,41 @@
             .fade-invert { -webkit-filter: opacity(0.7) invert(70%);}
             
             svg {display: none;}
+            
+            
+            /* Animations */
+            .animated-box { width: 640px; height: 360px; margin-bottom: 20px; color: #eee; padding: 0.8em 1.953em ; animation-play-state: paused; }
+            #box1 { background-color: #001F3F;  -webkit-animation: colour-pulse-1 4s 3 ease-in-out alternate ; }
+            #box2 { background-color: #FF4136;  -webkit-animation: colour-pulse-2 4s 3 ease-in-out alternate ; }
+            #box1.playing { animation-play-state: running; }
+            #box2.playing { animation-play-state: running; }
+            .animated-box h3 { -webkit-animation: none; }
+            
+            @keyframes colour-pulse-1 {
+                50% {
+                    background-color: #FF4136;
+                    -webkit-filter: blur(1px);
+                }
+                100% {
+                    background-color: #001F3F;
+                }
+            }
+            @keyframes colour-pulse-2 {
+                
+                50% {
+                    background-color: #001F3F;
+                    -webkit-filter: blur(1px);
+                }
+                100% {
+                    background-color: #FF4136;
+                }
+            }
+            
         </style>
 
     </head>
     <body>
-        <header></header>
+        <header class="page-header row"><div class="cols-12"><h1>CSS Filters, Animation testout</h1></div></header>
         <main>
             <section class="row">
                 <div class="cols-12">
@@ -55,10 +88,21 @@
                      </filter>
                      
                     </svg>
-                    <h1>CSS Filters testout</h1>
+                    
                     <h2>Filterd fishes</h2>
 <!--                    <img class="contrast" src="fishes.jpg" alt="fishes" />-->
                     <img class="svg-drop-shadow" src="fishes.jpg" alt="fishes" />
+                </div>
+            </section>
+            <section class="row">
+                <div class="cols-12">
+                    <h2>Animated boxes</h2>
+                    <div class="animated-box playing" id="box1">
+                        <h3>Box 1</h3>
+                    </div>
+                    <div class="animated-box" id="box2">
+                        <h3>Box 2</h3>
+                    </div>
                 </div>
             </section>
         </main>
