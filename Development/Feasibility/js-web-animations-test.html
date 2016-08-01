@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style type="text/css">
+            html { box-sizing: border-box; font-family:monospace;}
+            *, *:before, *:after { box-sizing: border-box; }
+            .row { padding: 1.25em 0; }
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+            [class*='cols-'] { padding: 0 15px; float: left; width: 100%; }
+            .cols-12 { max-width 100%; }
+            
+            .page-header { border-bottom: 1px dotted #ababab; }
+            .page-header h1 { margin-top: 0.262em;}
+            
+            /* Animation targets */
+            .animated-box { width: 640px; height: 360px; margin-bottom: 20px; color: #eee; padding: 0.8em 1.953em; }
+            #box1 { background-color: #001F3F;  }
+            #box2 { background-color: #FF4136;  }
+        </style>
+
+    </head>
+    <body>
+        <header class="page-header row"><div class="cols-12"><h1>Web Animations API testout</h1></div></header>
+        <main>
+            <section class="row">
+                <div class="cols-12">
+                    <h2>Animated boxes</h2>
+                    <div class="animated-box playing" id="box1">
+                        <h3>Box 1</h3>
+                    </div>
+                    <div class="animated-box" id="box2">
+                        <h3>Box 2</h3>
+                    </div>
+                </div>
+                <script>
+                    (function animateTest(global) {
+                        console.log("Helloooo...");
+                        var box1 = document.querySelector('#box1');
+                        console.log(box1);
+                        var animation = box1.animate([
+                            {backgroundColor: '#001F3F'}, 
+                            {backgroundColor: '#FF4136'}
+                        ], 
+                        {
+                            duration: 1000,
+                            direction: 'alternate',
+                            easing: 'ease-in-out',
+                            fill: 'forwards',
+                            iterations: 6
+
+                        });     
+                        console.log(animation);
+                        
+                    }) (window);
+
+                    
+                </script>
+            </section>
+            <section class="row">
+                <div class="cols-12">
+
+                </div>
+            </section>
+        </main>
+    </body>
+</html>
